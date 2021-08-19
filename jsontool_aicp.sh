@@ -9,7 +9,7 @@ if [ "$1" ]; then
     file_name=$(basename $file_path)
     device_name=$(echo $file_name | cut -d "-" -f 3)
     if [ -f $file_path ]; then
-        if [[ $file_name == *"AICP"* ]]; then # only generate for official builds
+        if [[ $file_name == *"aicp"* ]]; then # only generate for official builds
             echo -e "${GREEN} Generating $device_name ota json ${NC}"
             file_size=$(stat -c%s $file_path)
             currenttime=$(date +%s)
@@ -24,7 +24,7 @@ if [ "$1" ]; then
             echo "     \"id\": \"${id}\"," >> $file_path.json
             echo "     \"size\": ${file_size}," >> $file_path.json
             echo "     \"url\": \"${link}\"," >> $file_path.json
-            echo "     \"version\": \"14.5\"," >> $file_path.json #need to change this value everytime
+            echo "     \"version\": \"16.1\"," >> $file_path.json #need to change this value everytime
             echo "    }" >> $file_path.json
             echo "  ]" >> $file_path.json
             echo "}" >> $file_path.json
